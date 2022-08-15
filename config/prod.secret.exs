@@ -23,9 +23,17 @@ secret_key_base =
     You can generate one by calling: mix phx.gen.secret
     """
 
+weather_api_key =
+  System.get_env("OWM_API_KEY") ||
+    raise """
+    environment variable API_KEY is missing.
+    Please generate and place your free openweathermap.org API key in your .env file.
+    """
+
 config :weather, WeatherWeb.Endpoint,
   http: [:inet6, port: String.to_integer(System.get_env("PORT") || "4000")],
-  secret_key_base: secret_key_base
+  secret_key_base: secret_key_base,
+  weather_api_key: owm_api_key
 
 # ## Using releases (Elixir v1.9+)
 #

@@ -6,4 +6,5 @@ defmodule WeatherWeb.WeatherView do
       "foo" => foo
     }
   end
+
 end

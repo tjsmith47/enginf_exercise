@@ -13,14 +13,15 @@ defmodule WeatherWeb.Router do
     plug :accepts, ["json"]
   end
 
+  #OpenWeatherMap API Routing Scope
   scope "/", WeatherWeb do
-    pipe_through :browser
-
-    get "/", WeatherController, :index
+    pipe_through :api
+    get "/weather", WeatherController, :get_weather
   end
 
-  # Other scopes may use custom stacks.
-  # scope "/api", WeatherWeb do
-  #   pipe_through :api
-  # end
+  #Index landing route.
+  scope "/", WeatherWeb do
+    pipe_through :browser
+    get "/", WeatherController, :index
+  end
 end

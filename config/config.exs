@@ -11,10 +11,12 @@ config :weather,
   ecto_repos: [Weather.Repo],
   env: :dev
 
-# Configures the endpoint
+# Configures the endpoint for chosen API;
+# --> OpenWeatherMap chosen due to offering a free weather API.
 config :weather, WeatherWeb.Endpoint,
   url: [host: "localhost"],
-  secret_key_base: "47zk1PtVrs01ltSZu9akbgqqHRzj3YG0+oDjqpEjhf3e+nRIwb9NYJCCO5EX5/lg",
+  secret_key_base: SECRET_KEY_BASE,
+  owm_api_base: OWM_API_KEY,
   render_errors: [view: WeatherWeb.ErrorView, accepts: ~w(html json)],
   pubsub: [name: Weather.PubSub, adapter: Phoenix.PubSub.PG2]
 

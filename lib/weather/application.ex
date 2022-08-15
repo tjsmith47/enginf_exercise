@@ -14,6 +14,10 @@ defmodule Weather.Application do
     children = [
       # Start the Ecto repository
       # Weather.Repo,
+      # Start the Telemetry Supervisor
+      # WeatherWeb.Telemetry,
+      # Start the PubSub system
+      # {Phoenix.PubSub, name: WeatherWeb.PubSub},
       # Start the endpoint when the application starts
       WeatherWeb.Endpoint
       # Starts a worker by calling: Weather.Worker.start_link(arg)

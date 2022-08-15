@@ -1,9 +1,16 @@
 defmodule WeatherWeb.Endpoint do
   use Phoenix.Endpoint, otp_app: :weather
 
+  @session_options [
+    store: :cookie,
+    key: "_weather_key",
+    signing_salt: "h1568RnW"
+  ]
+
   socket "/socket", WeatherWeb.UserSocket,
     websocket: true,
     longpoll: false
+
 
   # Serve at "/" the static files from "priv/static" directory.
   #
@@ -33,14 +40,6 @@ defmodule WeatherWeb.Endpoint do
 
   plug Plug.MethodOverride
   plug Plug.Head
-
-  # The session will be stored in the cookie and signed,
-  # this means its contents can be read but not tampered with.
-  # Set :encryption_salt if you would also like to encrypt it.
-  plug Plug.Session,
-    store: :cookie,
-    key: "_weather_key",
-    signing_salt: "h1568RnW"
-
+  plug Plug.Session, @session_options
   plug WeatherWeb.Router
 end
