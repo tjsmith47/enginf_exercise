@@ -1,0 +1,14 @@
+version: '3.4'
+
+services:
+  phoenix:
+    image: phoenix
+    build:
+      context: deps/phoenix
+      dockerfile: ./Dockerfile
+    environment:
+      NODE_ENV: production
+    ports:
+      - 4000:4000
+    volumes:
+      - .:/app

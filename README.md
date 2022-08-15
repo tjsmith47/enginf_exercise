@@ -1,10 +1,15 @@
 # SalesLoft Engineering Enablement Exercise
 
-SalesLoft is looking to add weather information to our app. Why? I dunno, Product Management is weird. 
+*** Please generate free API KEY from OpenWeatherMap.org (OneCall 3.0 - chosen due to familiarity and cost), and run "export OWM_API_KEY=[YOUR_API_KEY]".
 
-Anyways, we need to set up a small proxy service so that we can abstract away the provider we use behind the scenes. Engineering Enablement is kicking off this project so we can get all the plumbing hooked up and good to go for development to add caching, service load balancing, and other complex things. 
+
+
+SalesLoft is looking to add weather information to our app. Why? I dunno, Product Management is weird.
+
+Anyways, we need to set up a small proxy service so that we can abstract away the provider we use behind the scenes. Engineering Enablement is kicking off this project so we can get all the plumbing hooked up and good to go for development to add caching, service load balancing, and other complex things.
 
 They will need:
+
 - The initial API
 - A basic test suite
 - CI to be setup
@@ -23,11 +28,12 @@ No HTTP client is provided, but we like using [HTTPoison](https://github.com/edg
 
 ## Expected API
 
-Your mission, if you choose to accept it, is to get weather information from ~~[Dark Sky's API](https://darksky.net/dev)~~ (The Dark Sky API is no longer public. Please choose [an alternative](https://hackernoon.com/8-weather-api-alternatives-now-that-darksky-is-shutting-down-j8gs302e) and mention why you ended up using the option you chose.) and present it as an HTTP API. You will need to get your own API key from Dark Sky, but they are free. **Please don't commit your API key into the repository or publish it to a Docker registry!**
+Your mission, if you choose to accept it, is to get weather information from ~~[Dark Sky&#39;s API](https://darksky.net/dev)~~ (The Dark Sky API is no longer public. Please choose [an alternative](https://hackernoon.com/8-weather-api-alternatives-now-that-darksky-is-shutting-down-j8gs302e) and mention why you ended up using the option you chose.) and present it as an HTTP API. You will need to get your own API key from Dark Sky, but they are free. **Please don't commit your API key into the repository or publish it to a Docker registry!**
 
-`/weather?latitude&longitude` is the expected input for a location (e.g., `/weather?latitude=33.7984&longitude=-84.3883`). 
+`/weather?latitude&longitude` is the expected input for a location (e.g., `/weather?latitude=33.7984&longitude=-84.3883`).
 
 It should return JSON with the current weather and 7 day forecast. The response looks like this:
+
 ```json
 {
   "date": "2018-01-23",
@@ -62,5 +68,4 @@ For deployment, we use Kubernetes, so the app will need to run within a Docker c
 
 If you don't have a Kubernetes cluster available, you can run one locally with [Minikube](https://kubernetes.io/docs/setup/minikube/) or remotely with [Katacode](https://www.katacoda.com/courses/kubernetes/playground) or [Play with Kubernetes](https://labs.play-with-k8s.com/).
 
-In the end, you should be able to push to Github and have the test suite run. And we should be able to add the Kubernetes resources to a cluster and be able to access the API. 
-
+In the end, you should be able to push to Github and have the test suite run. And we should be able to add the Kubernetes resources to a cluster and be able to access the API.
