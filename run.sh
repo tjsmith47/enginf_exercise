@@ -3,4 +3,5 @@
 
 mix ecto.create
 mix ecto.migrate
+mix phx.gen.secret
 mix phx.server

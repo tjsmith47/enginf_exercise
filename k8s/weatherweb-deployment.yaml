@@ -1,0 +1,30 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: weatherweb-deployment
+spec:
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: weatherweb
+    spec:
+      containers:
+        - name: weatherweb
+          image: weatherweb:release
+          ports:
+            - containerPort: 8000
+          args: ["foreground"]
+          env:
+            - name: HOST
+              value: "jarvisprotocol.one"
+            - name: SECRET_KEY_BASE
+              value: "secret_key_base"
+            - name: DB_USERNAME
+              value: "postgres"
+            - name: DB_PASSWORD
+              value: "postgres"
+            - name: DB_NAME
+              value: "weather_dev"
+            - name: DB_HOSTNAME
+              value: "piServer.jarvisprotocol.one"
